@@ -19,6 +19,6 @@ AFTER=`echo $FreeSpaceAfterClean | SanitiseMeasurement`
 
 FREED=`echo "$BEFORE-$AFTER" | bc`
 
-echo "Space Released: $FREED"
+echo "Space Released: $FREED GB"
 
 exit 0

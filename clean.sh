@@ -3,8 +3,7 @@
 FreeSpaceBeforeClean=`df -k -h . | awk ' { print $4 } ' | sed -e 's/Avail//g' | tail -n 1`
 
 function SanitiseMeasurement {
-
-    
+    sed s/M//g | sed s/G//g | sed s/T//g
 }
 
 echo -e "
@@ -64,9 +63,17 @@ Performing Yum Clean ...
 "
 yum clean all
 
+# Checks free space after cleaning routine
 FreeSpaceAfterClean=`df -k -h . | awk ' { print $4 } ' | sed -e 's/Avail//g' | tail -n 1`
 
 # Strips the M (for MB), G (for GB) and T (for Terabyte) out of the results, just leaving a integer
-echo $FreeSpaceAfterClean | sed s/M//g | sed s/G//g | sed s/T//g
+BEFORE=`echo $FreeSpaceBeforeClean | SanitiseMeasurement`
+AFTER=`echo $FreeSpaceAfterClean | SanitiseMeasurement`
+
+# Calculates space free'd up
+FREED=`echo "$BEFORE-$AFTER" | bc`
+
+# Displays the amount of space free'd up
+echo "Space Released: $FREED GB"
 
 exit 0
