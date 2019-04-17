@@ -71,7 +71,7 @@ BEFORE=`echo $FreeSpaceBeforeClean | SanitiseMeasurement`
 AFTER=`echo $FreeSpaceAfterClean | SanitiseMeasurement`
 
 # Calculates space free'd up
-FREED=`echo "$BEFORE-$AFTER" | bc`
+FREED=`echo "$AFTER-$BEFORE" | bc`
 
 # Displays the amount of space free'd up
 echo "Space Released: $FREED GB"
