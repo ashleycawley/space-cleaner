@@ -61,7 +61,7 @@ rm -rf /home*/*/.trash
 echo "
 Performing Yum Clean ...
 "
-yum clean all
+yum clean all &>/dev/null
 
 # Checks free space after cleaning routine
 FreeSpaceAfterClean=`df -k -h . | awk ' { print $4 } ' | sed -e 's/Avail//g' | tail -n 1`
