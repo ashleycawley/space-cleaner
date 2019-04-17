@@ -9,20 +9,20 @@ function SanitiseMeasurement {
 echo -e "
 Free Disk space prior to cleaning: $FreeSpaceBeforeClean"
 
-echo "Deleting Old/Archive Message Logs...
-`ls /var/log/messages-* 2>/dev/null`
-"
-rm -f /var/log/messages-* 2>/dev/null
+# echo "Deleting Old/Archive Message Logs...
+# `ls /var/log/messages-* 2>/dev/null`
+# "
+# rm -f /var/log/messages-* 2>/dev/null
 
 echo "Deleting Old/Archive Cron Logs....
 `ls /var/log/cron-* 2>/dev/null`
 "
 rm -f /var/log/cron-* 2>/dev/null
 
-echo "Deleting Old/Archive Secure Logs...
-`ls /var/log/secure-* 2>/dev/null`
-"
-rm -f /var/log/secure-* 2>/dev/null
+# echo "Deleting Old/Archive Secure Logs...
+# `ls /var/log/secure-* 2>/dev/null`
+# "
+# rm -f /var/log/secure-* 2>/dev/null
 
 echo "Deleting Old/Archive Spooler Logs...
 `ls /var/log/spooler-* 2>/dev/null`
